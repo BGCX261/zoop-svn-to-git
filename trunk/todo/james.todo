@@ -1,0 +1,6 @@
+-	DbObject
+	-	static::findMany
+	-	handing of empty objects
+		-	if you pass in an id of 0
+			-	don't perform any database operations
+			-	return NULL for all requests for scalars

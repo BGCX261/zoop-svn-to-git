@@ -1,0 +1,26 @@
+#summary TOC for the Zoop Manual
+#labels Phase-Requirements,Featured
+
+= Introduction =
+
+This page just ties together the top level items in the Zoop wiki to form a sort of manual.  Some things to keep in mind:
+  # All of the documentation here is still in a fairly primitive state.
+  # All information in this manual and on this website relates to to the development branch of zoop.  The stable version can be found at http://zoopframework.com.
+  # In addition to the information in the wiki there are API docs included with the source.  They are found in doc/api inside the main distribution.
+  # Notice that only one of the below pages is actually defined.
+  # One great source of information are the examples in the examples directory of the main distribution.
+  # If you really want to get going quickly sign up for [http://groups.google.com/group/zoop-users The Zoop users mailing list].  Right now it is very low volume so even simple questions tend to get answered very quickly.  In addition to getting prompt help for the user, asking questions to the mailing lists helps us to get a good idea of what type of information people would like to see in the docs.
+
+= Table of Contents =
+
+  # [GettingStarted Getting started]
+  # [Zones Zones: The Zoop controller]
+  # [Gui Gui: The Zoop view/templating system]
+    # [Layouts Layouts: Sitewide, reusable templates]
+  # [Database Databases: How to interact with the database through Zoop]
+    # [DbObject DbObject: A wrapper for database entities]
+    # [Sql Zoop SQL: database connections and executing raw SQL queries]
+  # [Forms Forms: How to handle client side validation, server side validation and saving of forms in Zoop]
+  # [Debugging Debugging: How Zoop helps with debugging]
+  # [Error Error handling: Error handling in Zoop]
+  # [Config Config: Configuring Zoop and Zoop applications]

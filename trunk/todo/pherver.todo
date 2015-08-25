@@ -1,0 +1,22 @@
+-	create a generic server file
+	-	model it after ZoneApplication so you just do some inludes and say Pherver::run()
+	-	have a yaml configuration for indicating different server properties
+-	allow for these options
+	-	single-process vs multi-process
+	-	if multi-process
+		-	maximum number of requests before it starts to just lock people out
+		-	one or many requests per child process
+		-	max number of child processes (= max requests if one request per child)
+		-	min number of child processes
+	-	comet
+	-	server modules to load and what sockets they should listen on
+-	modules
+	-	http
+		-	parse the request with pecl_http
+		-	create the response with Zoop Framework Http
+		-	replace those components with your own Http reader and parser
+	-	session
+	-	sqlite
+-	system integreation
+	-	allow for daemons to be launched by launchd, xinetd, inted etc
+		-	this might make it so in many instances you don't have to write process management code just the socket code

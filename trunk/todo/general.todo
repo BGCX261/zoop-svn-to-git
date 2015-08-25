@@ -1,0 +1,92 @@
+-	important stuff
+	-	add in sass: http://sass-lang.com/
+	-	set up pear channels
+	-	necessary modules
+		-	awesome permissions system
+		-	forms
+			-	validation
+			-	saving
+		-	ajax
+	-	use exceptions to help people get set up, don't automatically run schema changes
+	-	good solution for form validation
+		-	check fields on the client
+		-	check fields on the server that can't be checked on the client and return results
+		-	check fields on the server to see if they've been tampered with and throw and error if there's a problem
+		-	hilight fields that need to be fixed and give reasons
+		-	assign field names like _autosave[$classname][$id][$fieldname]
+		-	store the allowed autosave info in the session under a random token name
+		-	store the token in the form
+		-	create a Form::autosave function to be called on post
+			-	foreach _autosave field
+				-	verfify that it's an authorized field
+				-	create the object if necessary
+				-	save the field to the object
+			-	save object that you created
+	-	set up config.yaml in all stationary
+	-	include examples in stationary and tutorials explaining the following
+		-	check out from code.google.com
+		-	including modules
+		-	register class
+		-	setting up the tmp directory, should we have it automatically create sub dirs?
+		-	adding new zones, have ZoneDefault plus two other, document how to add new ones
+		-	better default main.tpl, fix the float problems
+		-	multiple layouts, per app, per zone, per page
+		-	non-default pages, set up several pages in multiple zones
+		-	db, how it get it set up right away
+		-	how to prevent sql injection
+		-	how to prevent script injection
+		-	session
+		-	dbobject
+-	slightly less important stuff
+	-	creating new projects automatically
+		-	command line tool
+	-	creating zones automatically
+		-	command line tool to do it
+		-	auto configure the includes
+	-	migrations
+		-	create them automatically
+		-	apply all migrations
+		-	apply single migration
+		-	apply latest migratin
+		-	re-apply single / latest migration
+	-	retool zap
+		-	"zones" are identified by the object type, allow for aliases
+		-	an object type can supply code for a list of verbs
+		-	a verb / type can have any number of objects
+		-	capture and pass along flag information
+-	theory
+	-	provide a wiki page with the theorys behind zoop
+		-	major points
+			-	systems theory (see rad page)
+			-	build a better wheel or steal someone else's
+				-	procedure
+					-	create an api that we need
+					-	find a library that does the heavy lifting
+					-	wrap it
+					-	if there are multiple options include and wrap all of them and use a factory method to choose one
+					-	if you decide you can beat the existing libraries fork one or write it from scratch
+					-	choose which one to use either in config or allow the request to be made in the code for each specific circumstance
+				-	this works best when there are many constantly evolving implementations out there so you might want to swap them in and out
+				-	examples
+					-	
+			-	DRY
+			-	use magic (convention over configuration in Rails terms) in select instances that are
+				-	commonly used
+				-	easily learned
+			-	already started here: http://code.google.com/p/zoop/wiki/Philosophy
+			-	yagni
+			-	Quick and dirty vs slow and clean or... fast and clean
+				-	examples of how we allow you start start with fast and clean but rigid code, but then allow to add flexibility without breaking things (getters, setters, scaffolding etc)			
+			-	organic growth
+			-	motivation
+				-	work you want to do vs. work you have to do
+				-	instant gratification
+				-	getting something working quickly
+				-	open source vs closed sorce
+			-	we are not design pattern whores
+				-	we find solutions to problems and use design patterns when they fit
+				-	it seems like people are out there don't know how to actually solve problems so they study a bunch of design patterns and try to apply a standard design pattern to every single problem out there, but it's not always such a great fit
+				-	if I'm really just missing out here, just show me where
+		-	style
+			-	state the point
+			-	provide examlples in zoop

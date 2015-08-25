@@ -1,0 +1,8 @@
+-	sections
+	-	person
+		-	adding
+		-	editing
+	-	units
+	-	exercises
+	-	sessions
+-	break the sql out of the controller and put it into the model (the sql commented out of zone default???)

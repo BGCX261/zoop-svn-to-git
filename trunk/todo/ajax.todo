@@ -1,0 +1,72 @@
+-	training
+	-	change this to js.todo
+	-	create some examples
+-	documentation
+	-	add pages in the wiki with links to the yui, jquery, and jquery modules docs
+-	libraries
+	-	loader
+		-	use the google and yahoo loaders so we don't have to include any complete libraries
+		-	or make your own loader
+			-	just include them with a smarty plugin
+			-	or with javascript (http://www.javascriptkit.com/javatutors/loadjavascriptcss.shtml)
+			-	minify and combine scripts
+				-	js: http://code.google.com/p/minify/
+				-	css: http://csstidy.sourceforge.net/
+			-	pre-gzip them?
+				-	http://www.webcodingtech.com/php/gzip-compression.php
+				-	http://www.fiftyfoureleven.com/weblog/web-development/css/the-definitive-css-gzip-method
+	-	include small scripts and plugins
+	-	remove any major libraries already in there
+	-	try out Objective-J / Cappuccino
+	-	look into this project for handling many of these functions
+		-	http://ajaxian.com/archives/juicer-package-your-javascript-and-css
+		-	http://www.cjohansen.no/en/ruby/juicer_a_css_and_javascript_packaging_tool
+-	functions
+	-	tables
+		-	sortable (http://tablesorter.com/docs/)
+		-	editable (http://davehauenstein.com/code/jquery-edit-in-place/)
+		-	custom adornments
+		-	reordering
+		-	scrolling with fixed headers (http://jackysee.googlepages.com/fixedheaders.html)
+		-	column resizing (http://www.ita.es/jquery/jquery.grid.columnSizing.htm)
+		-	show / hide columns (http://p.sohei.org/jquery-plugins/columnmanager/)
+		-	row resizing (http://www.ita.es/jquery/jquery.grid.rowSizing.htm)
+		-	navigating and manipulating table cells (http://plugins.jquery.com/project/TableHelper)
+		-	paging (http://plugins.jquery.com/project/tablePager)
+		-	event handling (http://plugins.jquery.com/project/tableRowCheckboxToggle)
+		-	filtering (http://gregweber.info/projects/uitablefilter)
+		-	tree table (http://ludo.cubicphuse.nl/jquery-plugins/treeTable/doc/index.html#examples)
+		-	load data through various forms
+			-	local json
+			-	loadable json
+			-	local xml
+			-	loadable xml
+			-	existing html table?
+			-	smarty tags
+			-	php variables
+	-	form validation
+	-	dynamcially load divs
+	-	submit forms via ajax
+		-	return navigation information
+	-	updates to control states affecting other controls
+		-	disable other controls
+		-	make other controls invisible
+		-	execute arbitrary code
+		-	relplace the elements in a menu
+		-	load html from the server and put it somewhere
+	-	resizable input lists
+	-	progress indicators
+	-	autocomplete
+	-	drag and drop
+	-	visual effects
+	-	in place editing
+	-	forms
+		-	direct access to library through javascript
+		-	zoop javascript wrapper
+		 	-	consistant interface to various functions with plugable backends
+		-	smarty
+		-	guicontrols
+	-	comet
+-	misc
+	pquery (http://www.ngcoders.com/php/pquery-php-and-jquery)
+-	stupid git svn test

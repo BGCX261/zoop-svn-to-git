@@ -1,0 +1,135 @@
++	lazy connections to the database
+-	schemaless objects (exotic)
+	-	have one table for objects with just (id, type) where type could be a class name
+	-	have one table for fields with (object_id, field, value)
+	-	have an index on (field, value) (so everything is indexed basically)
+-	free memory from result sets after queries you've pulled all the data out
+-	support for sequences
+-	paginated result sets
+-	pre-loading of data for many objects at a time
+	-	run a sql statement, possibly excluding the field info
+	-	look up the field info if necessary (if we used our own query language )
+	-	create objects from the results
+-	redundant file systems
+	-	register two other file systems and make sure it gets written to both of them each time
+	-	if either fails on a write
+		-	throw an error
+		-	log the error
+	-	randomly choose one to read from
+-	function to take two database connections and copy between them
+	-	schema
+	-	data
+	-	settings
+	-	copy or exclude only specific tables, settings, other objects, data ranges, etc
+	-	copy linked data based on associations set up in DbObject or config files
+-	cheap multi-master support
+	-	make two connections
+	-	run a transaction on both connections
+	-	pre-commit both of them
+	-	commit both of them
+	-	document the fact that sequences between boxes won't be synced and your code will need to take that into account
+	-	create a uuid generator in php to compensate
+	-	build support into DbObject for this
+-	cheap paritioning across boxes
+	-	add support for DbObject to be tied to multiple servers
+	-	have some sort of partitioning function to determine which one new rows go to
+	-	for certain fields be able to use the partitioning function to know which box to get the data from
+	-	in other situations query each box and aggregate the results
+	-	make sure that DbObject doesn't try to do joins but rather always gets the objects from the correct box(es)
+		-	maybe allow it to do joins if you have set it up so you know all the relevant data will be on the same box
+-	enhance DbObject
+	-	relationships
+		+	one-to-one
+		-	one-to-many (hasMany)
+			-	allow you to auto-create x number of subordinate rows with given default values
+			+	hasOne
+			+	belongsTo
+			+	basic functionality
+			+	mapped field paramater
+			-	allow you to specify an array for the mapped field paramter and have it organize it like the Sql*Map functions
+		+	one-to-many
+			-	allow you to auto-create x number of subordinate rows with given default values
+			+	hasOne
+			+	belongsTo
+			+	basic functionality
+			+	mapped field paramater
+			-	allow you to specify an array for the mapped field paramter and have it organize it like the Sql*Map functions
+		+	one-to-many
+			-	allow you to auto-create x number of subordinate rows with given default values
+			+	hasOne
+			+	belongsTo
+			+	basic functionality
+			+	mapped field paramater
+			-	allow you to specify an array for the mapped field paramter and have it organize it like the Sql*Map functions
+		+	one-to-many
+			-	allow you to auto-create x number of subordinate rows with given default values
+			+	hasOne
+			+	belongsTo
+			+	basic functionality
+			+	mapped field paramater
+			-	allow you to specify an array for the mapped field paramter and have it organize it like the Sql*Map functions
+		+	one-to-many
+			-	allow you to auto-create x number of subordinate rows with given default values
+			+	hasOne
+			+	belongsTo
+			+	basic functionality
+			+	mapped field paramater
+			-	allow you to specify an array for the mapped field paramter and have it organize it like the Sql*Map functions
+		+	one-to-many
+			-	allow you to auto-create x number of subordinate rows with given default values
+		+	many-to-one
+			+	belongsTo
+		+	and many-to-many
+			+	hasMany(through)
+		-	distinguish between aggregate, ownership, and mapped relationships
+		-	have a way to indicate that you want to pre-load the objects from these relationships
+	-	figure out how to handle multiple database connections
+		-	map by class
+		-	map by function(classname, id) - returns connection
+		-	map by object
+	-	static functions
+		-	functions
+			-	findOne
+			-	findMany
+			-	findAll???
+			-	createOne
+			-	createMany
+			-	getOne
+			-	getMany
+		-	handling
+			-	pass the name of the class name you are dealing with
+			-	have zap create stubs in each new subclass to let you call SubClassName::staticFunction(...);
+				-	use __classname__ or whatever it is so it can be identical in every subclass file
+				-	discontinue these if we have late static binding
+			-	try in every way to keep SQL out of the controllers and views
+				-	always create wrapper relationships, refiners, and wraper methods in the domain objects to keep SQL where it belongs
+	-	have a facility for creating often used queries within DbObject subclasses
+		-	a names set of paramaters to add to the where clause
+			-	examples
+			 	-	'currentManagerReview' => array('type' => self::managerType, 'period_id' => $gCurrentPeriod)
+				-	'currentManagerReview => "<this>.type = " . self::managerType . " and <this>.period_id = $gCurrentPeriod";
+	-	set up abstract methods called with DbObject::__construct
+		-	relate: use this to set up relationships
+		-	refine: use this to set up named queries
+	-	allow an object to be bound if it has all the values for any unique key on the table
+		-	how would you know which one to look up on?
+			-	primary key if it is there
+			-	first one it finds otherwise
+			-	validate that the other unique field sets match up
+-	evaluate doctrine
+	-	doctrine query language
+	-	how it handles prepared statements vs paramater escaping
+	-	connection management - how do we want to do it?
+-	support for options fields, you give it the table, the mapped field, and a list of options
+	-	add the field to the table
+	-	create the options table (you could combine many into one table, then you could skip this step it the table exists)
+	-	insert all the options into the table
+-	various tree handling libraries
+-	map reduce implementation
+-	distributed non-relational system
+	-	uuid for every entity
+	-	automatic schema creation based on objects or put each field in it's own row
+	-	manage all connections transparently
+	-	partition all data across all servers
+	-	make sure every row is in at least two places
+	-	make it possible to replicate across the internet

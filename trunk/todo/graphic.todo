@@ -1,0 +1,121 @@
+-	steps
+	+	import the pdf module from zend framework
+	-	implement wrapped rich text processing
+		+	parser module
+		+	get ZendPdfContext working
+		+	create an example with an html string that is just some lorum ipsum text with a few <br>s in it
+		+	implement the following as necessary to parse the string
+			+	GraphicDocument extends GraphicDiv
+			+	GraphicDiv
+			+	GraphicTextRun
+		+	verify that the DOM tree is created properly
+		+	write a Zend_Pdf graphic context
+		-	render the div
+			+	impement the following as needed
+				+	GraphicHardBrokenLine
+				+	GraphicSoftBrokenLine
+				+	GraphicTextStyle
+			+	figure out the best way to specify the canvas size
+			+	give the document a size and have have it pass the width down to it's children
+			+	make it actually draw the basic text
+				+	figure out why its drawing the last segment 3 times
+			+	now make it draw correct
+				+	in ZendPdfContext put 0,0 in the upper left corner
+				-	make the measuring stuff actually work so that hard broken line can break into softbrokenlines
+					-	make the example have more text and in a smaller area for testing this					
+			-	make sure it is wrapping properly with the default styles
+			-	handle left/right whitespace issues properly
+			-	figure out how to map raw xhtml style onto the attributes for the various GraphicObject descendants
+	-	more advanced text features
+		-	alignment (left, center, right)
+		-	make all kinds of text styles work
+		-	have the ability to "fit" text to a space
+			-	for instance check it at a certain size and shrink the text size if it doesn't fit
+				-	you might need to be register callback to handle some situations that can't be described by data alone
+		-	automatic replacement of certain bad characters like the crazy dashes
+	-	repeating
+		-	allow you to repeat stuff in individual blocks/pages
+		-	allow you to skip certain pages
+		-	allow you to start on any page
+		-	have some facility for saying: Page curPage of totalPages
+	-	release a new version for the Zend_Pdf people
+		-	update the front page to also refer people to Zend Framework
+		-	document our inclusion of some parts of Zend Framework
+		-	add a copyright notice
+		-	choose a licence that is compatible with Zend_Pdf (new bsd?)
+		-	build new api docs
+		-	build a new tarball
+		-	post it to the google code site
+		-	possibly set up a site showing the code and the results
+		-	maybe even set up a demo where they can type in their text and have it generate a pdf
+		-	notify the zend framework mailing list
+	-	create GuiGraphic and GuiPdf
+		-	extend Gui and get the xml
+		-	fully modular parser
+			-	doesn't understand any tags
+			-	each tag tag type must load a parser module
+			-	creates DOM objects
+	-	enhance GraphicDiv
+		-	breaking across pages (with proper widow/orphan support)
+		-	make sure borders, margins, padding, backgrounds etc work (use dompdf test to check yourself)
+		-	float attributes???
+	-	css
+		-	parse css info in the header
+		-	apply styles to the DOM
+		-   make sure you follow proper cascading rules
+	-	then tables
+		-	borders, padding, margins, backgrounds, etc
+	-	column sets, document, 
+	-   ...
+	-	charts and graphs???
+-	controlled rendering
+	-	parse xml, yaml, html etc, but whitelist what tags/attributes will be preserved
+	-	then send the results back to original form to be rendered by a browser or render them as is
+-	performance
+	-	are HardBrokenLines broken into SoftBroken lines over and over again?  If so can you do it once and cache the results?
+	-	how intensive is calcing the char widths? can that be cached?
+-	focus on the weaknesses of the current implementation
+	-	divs
+		-	vertical centering
+		-	borders
+		-	spacing
+		-	background colors/patterns/images
+		-	breaking across pages
+	-	tables
+		-	borders
+		-	padding
+		-	margin
+		-	spacing - what is this margin and padding are both different kinds of spacing
+		-	colspan
+		-	rowspan
+		-	breaking across pages
+		-	widow / orphan support
+		-	columns widths need to be consistent across rows even if they are not explicitly specified or are specified in rows
+			other than the first one
+	-	allow you to use lists and divs instead of tables for layout and association (including for widow / orphan support)
+	-	debugging
+		-	make it easy to spit out:
+			-	the produced xml file
+			-	a tree representing the object structrure that was created
+			-	maybe just make it something you can add into the url???
+	-	parser
+		-	try to conform as best you can to the html/css specs
+		-	modulerize the parser so that each element is part of some module, keep core parser very modular
+	-	use svg for other graphics
+		-	shapes, lines, etc
+		-	make sure you can have point level precision with anything you might want to draw
+	-	page breaks
+	    -   let you specify the page size for each page break
+	-	why does it not hanlde xml/html entities like &nbsp;
+	-	make sure that styles always apply to exactly what the dom indicates they should apply to
+	-	documentation
+		-	from the very beginning have a format for documenting the syntax of the xml
+		-	document first how you want it to work
+		-	then make it work like the docs say it will
+	-	css
+		-	there isn't much point in working towards compatibility with HTML if you don't have CSS support
+-   test suites
+    -   http://www.w3.org/Style/CSS/Test/CSS1/current/
+    -   http://www.google.com/search?client=safari&rls=en&q=html+div+css+examples&ie=UTF-8&oe=UTF-8
+    -   http://www.google.com/search?client=safari&rls=en&q=css+test+suite&ie=UTF-8&oe=UTF-8
+    -   http://www.google.com/search?client=safari&rls=en&q=html+table+css+examples&ie=UTF-8&oe=UTF-8

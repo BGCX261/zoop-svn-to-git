@@ -1,0 +1,27 @@
+-	instance config
+	-	allow you to parse config files without using the static functions
+	-	allow an optional self referencing mechanism
+	-	make Config use an InstanceConfig
+-	make a ConfigException for handling problems with configuraion
+	-	ConfigException
+-	Configurable interface
+	-	methods
+		-	getRequireds
+		-	getDefaults
+	-	any object in your module that needs to use configuration information should implement this interface
+-	make it possible to have multiple config files with
+	+	priority
+		+	first come first served policy.  whoever defines it first decides what is used
+		+	or somehow define who has priority when the config file is imported into the general config space (we used this apporach)
+	-	possible scenarios
+		+	each module has a config with default settings
+		+	each application has a config with application defaults which may override module settings
+		-	each installation has a config that may override the application or module defaults
+		-	other more compelex scenarios
+-	caching
+	-	take the final array and store it to a file for quick loading
+-	inline config???
+	-	maybe use the format that has been presented for new php array syntax but put it in a string and parse it
+-	multiple backends
+	-	YAML
+	-	database

@@ -1,0 +1,17 @@
+app:
+    topnav:
+        Home: {link: home}
+        Contact: {link: contact}
+        About: {link: about}
+        Admin: {link: drafts, requireLogin: true}
+    topnav_disabled:
+        Articles: articles
+        Software: software
+        Links: links
+        Blog: blog
+zoop:
+    db:
+        default:
+            driver: php_pgsql
+            database: content
+            username: postgres
